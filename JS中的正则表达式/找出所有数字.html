@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>找出所有数字</title>
+
+  <script>
+    var str = '12 fff 87 ea456 154 afe7';
+    var arr = [];
+    var tmp = '';
+
+    for (var i = 0; i < str.length; i++) {
+      //charAt获取某个字符
+      if (str.charAt(i) > '0' && str.charAt(i) <= '9') {
+        tmp += str.charAt(i);
+      } else { //非数字
+        if (tmp) {
+          arr.push(tmp);
+          tmp = '';
+        }
+      }
+    }
+    if (tmp) {
+      arr.push(tmp);
+      tmp = '';
+    }
+    alert(arr);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

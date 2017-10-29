@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>邮箱校验0</title>
+  <script>
+    window.onload = function() {
+      var oTxt = document.getElementById('txt1');
+      var oBtn = document.getElementById('btn1');
+
+      oBtn.onclick = function() {
+        //一串英文、数字、下划线    @    一串英文、数字   。   一串英文
+        //^  行首（字符串开头）
+        //$  行尾（字符串结尾）
+        //    var re = /\w+@[a-z0-9]+\.[a-z]+/i;
+        //从字符串开头到结尾，中间只能出现 \w+@[a-z0-9]+\.[a-z]+
+        var re = /^\w+@[a-z0-9]+\.[a-z]+$/i;
+        //test 字符串有一部分符合要求 返回true
+        if (re.test(oTxt.value)) {
+          alert('合法的邮箱');
+        } else {
+          alert('你丫写错了');
+        }
+      };
+    };
+  </script>
+  </script>
+</head>
+
+<body>
+  <input type="text" id="txt1" />
+  <input id="btn1" type="button" value="校验" /><br />
+
+
+</body>
+
+</html>

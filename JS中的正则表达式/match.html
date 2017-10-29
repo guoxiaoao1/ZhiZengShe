@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>match把所有匹配的东西，提取出来</title>
+
+  <script>
+    var str = 'afe 12 468 afe45 ef8';
+    // var re = /\d/g; //global 找到全部 一个数字一组
+    // var re = /\d\d/g; //global 找到全部  两个数字一组
+    // var re = /\d\d\d/g; //global 找到全部  三个数字一组
+
+    var re = /\d+/g; //global 找到全部 若干个数字一组
+
+    alert(str.match(re));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

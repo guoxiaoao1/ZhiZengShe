@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数码时钟</title>
+  <style>
+    body {
+      background: black;
+      color: #fff;
+      font-size: 50px;
+    }
+  </style>
+
+  <script>
+    function toDou(n) {
+      if (n < 10) {
+        return '0' + n;
+      } else {
+        return '' + n;
+      }
+    }
+
+    window.onload = function() {
+      var aImg = document.getElementsByTagName('img');
+
+      //不会立即执行，有延迟效果
+      // setInterval(function() {
+      //   var oDate = new Date();
+      //   var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+      //   for (var i = 0; i < aImg.length; i++) {
+      //     aImg[i].src = 'images/' + str[i] + '.png';
+      //   }
+      // }, 1000);
+      //
+      // //立即执行
+      function tick() {
+        var oDate = new Date();
+        var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+        for (var i = 0; i < aImg.length; i++) {
+          //获取图片路径 charAt(i)
+          aImg[i].src = 'images/' + str.charAt(i) + '.png';
+        }
+
+      }
+      setInterval(tick, 1000);
+      tick();
+    }
+  </script>
+</head>
+
+<body>
+  <img src="images/0.png" />
+  <img src="images/1.png" /> :
+  <img src="images/2.png" />
+  <img src="images/3.png" /> :
+  <img src="images/4.png" />
+  <img src="images/5.png" />
+
+</body>
+
+</html>
