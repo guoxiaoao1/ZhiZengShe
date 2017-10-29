@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>完美运动框架</title>
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      background: #0bf;
+      filter: alpha(opacity(30));
+      opacity: 0.3;
+      border: 1px solid #666;
+      font-size: 16px;
+    }
+  </style>
+  <script src="JS/move2.js"></script>
+  <!--
+运动框架演变过程
+startMove(iTarget)              运动框架
+startMove(obj,iTarget)          多物体
+startMove(obj,attr,iTarget)     任意值
+startMove(obj,attr,iTarget,fn)  链式运动
+startMove(obj,json)             多值运动
+startMove(obj,json,fn)          完美运动框架 -->
+
+  <script>
+    window.onload = function() {
+      var oBtn = document.getElementById('btn1');
+      var oDiv = document.getElementById('div1');
+
+      oBtn.onclick = function() {
+        startMove(oDiv, {
+          width: 300,
+          height: 300,
+          opacity: 100,
+          borderWidth: 50,
+          fontSize: 36
+        }, function() {
+          alert('a');
+        });
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <input id="btn1" type="button" value="运动" />
+  <div id="div1">
+    完美运动框架
+  </div>
+</body>
+
+</html>

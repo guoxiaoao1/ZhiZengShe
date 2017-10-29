@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>只能输入数字的输入框</title>
+  <script>
+    window.onload = function() {
+      var oTxt = document.getElementById('txt1');
+      oTxt.onkeydown = function(ev) {
+        var oEvent = ev || event;
+        //alert(oEvent.keyCode); //0——48  9——57
+        // if (oEvent.keyCode < 48 || oEvent.keyCode > 57) {
+        if (oEvent.keyCode！ = 8 && (oEvent.keyCode < 48 || oEvent.keyCode > 57) && (oEvent.keyCode < 96 || oEvent.keyCode > 105)) { //48——57:大键盘上的数字  96——105:小键盘上的数字
+          return false; //阻止输入
+        }
+
+      };
+    }
+  </script>
+</head>
+
+<body>
+  该输入框只能输入大小键盘上的数字和Backspace: <input id="txt1" type="text" />
+</body>
+
+</html>

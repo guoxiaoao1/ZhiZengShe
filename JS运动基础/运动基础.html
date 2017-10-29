@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: #999;
+      position: absolute;
+      /*没有绝对定位跑不起来*/
+      top: 50px;
+      left: 0px;
+    }
+  </style>
+  <script>
+    var timer = null;
+
+    function startMove() {
+      var oBox = document.getElementById('box');
+      timer = setInterval(function() {
+        var speed = 5;
+        if (oBox.offsetLeft >= 300) {
+          clearInterval(timer);
+        } else {
+          oBox.style.left = oBox.offsetLeft + speed + 'px';
+        }
+      }, 30);
+    }
+  </script>
+</head>
+
+<body>
+  <input id="btn" type="button" value="开始运动" onclick="startMove()" />
+  <div id="box">
+
+  </div>
+</body>
+
+</html>

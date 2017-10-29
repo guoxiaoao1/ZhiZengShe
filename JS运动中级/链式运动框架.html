@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      background: #999;
+      filter: alpha(opacity:30);
+      opacity: 0.3;
+      border: 5px solid #f65489;
+      font-size: 16px;
+    }
+  </style>
+  <script type="text/javascript" src="JS/move.js"></script>
+  <script>
+    window.onload = function() {
+      var oDiv = document.getElementById('div1');
+      oDiv.onmouseover = function() {
+        startMove(oDiv, 'width', 300, function() {
+          startMove(oDiv, 'height', 300, function() {
+            startMove(oDiv, 'opacity', 100, function() {
+              startMove(oDiv, 'borderWidth', 30, function() {
+                startMove(oDiv, 'fontSize', 36);
+              });
+            });
+          });
+        });
+      }
+      oDiv.onmouseout = function() {
+        startMove(oDiv, 'width', 100, function() {
+          startMove(oDiv, 'height', 100, function() {
+            startMove(oDiv, 'opacity', 30, function() {
+              startMove(oDiv, 'borderWidth', 5, function() {
+                startMove(oDiv, 'fontSize', 16);
+              });
+            });
+          });
+        });
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="div1">
+    链式运动框架
+  </div>
+</body>
+
+</html>

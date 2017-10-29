@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>键盘控制移动</title>
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      background: #999;
+      position: absolute;
+    }
+  </style>
+  <script>
+    document.onkeydown = function(ev) {
+      var oEvent = ev || event;
+      var oDiv = document.getElementById('div1');
+      //键盘上下左右控制移动
+      if (oEvent.keyCode == 37) { //左
+        oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+      } else if (oEvent.keyCode == 39) { //右
+        oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+      } else if (oEvent.keyCode == 38) { //上
+        oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+      } else if (oEvent.keyCode == 40) { //下
+        oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+  <div id="div1">
+
+  </div>
+</body>
+
+</html>

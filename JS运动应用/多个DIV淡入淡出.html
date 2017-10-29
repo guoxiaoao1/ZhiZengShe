@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多个DIV淡入淡出</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      float: left;
+      background: red;
+      filter: alpha(opacity:30);
+      opacity: 0.3;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      var aDiv = document.getElementsByTagName('div');
+      for (var i = 0; i < aDiv.length; i++) {
+        //可以把这个东西作为一个属性驾到物体身上；
+        aDiv[i].alpha = 30; //在多物体框架里面，所有东西都不能公用，只要有公用的东西，绝对会出问题；
+        aDiv[i].onmouseover = function() {
+          startMove(this, 100);
+        }
+        aDiv[i].onmouseout = function() {
+          startMove(this, 30);
+        }
+      }
+    }
+    //var alpha = 30;
+
+    function startMove(obj, iTarget) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function() {
+        var speed = (iTarget - obj.alpha) / 6;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+        if (obj.alpha == iTarget) {
+          clearInterval(obj.timer);
+        } else {
+          obj.alpha += speed;
+          obj.style.filter = 'alpha(opacity:' + obj.alpha + ')';
+          obj.style.opacity = obj.alpha / 100;
+        }
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+
+</html>

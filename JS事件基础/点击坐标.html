@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>点击</title>
+  <!-- 点击事件onclick -->
+  <script>
+    window.onload = function() {
+      document.onclick = function(ev) {
+        //  alert('a'); //JS第二定律：但凡是好用的东西，都是不兼容的；
+        //IE
+        //alert('X:' + event.clientX + ',' + 'Y:' + event.clientY); //点击坐标
+
+        //FF
+        //alert('X:' + ev.clientX + ',' + 'Y:' + ev.clientY); //点击坐标
+        var oEvent = ev || event; //获取Event对象（兼容写法）
+        alert('X:' + oEvent.clientX + ',' + 'Y:' + oEvent.clientY);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
