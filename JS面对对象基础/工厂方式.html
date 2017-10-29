@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>工厂方式</title>
+  <script>
+    function createPerson(name, qq) //构造函数
+    {
+      //原料
+      var obj = new Object();
+
+      //加工
+      obj.name = name;
+      obj.qq = qq;
+
+      obj.showName = function() {
+        alert('我的名字叫：' + this.name);
+      };
+      obj.showQQ = function() {
+        alert('我的QQ号：' + this.qq);
+      };
+
+      //出厂
+      return obj;
+    }
+
+    var obj = createPerson('blue', '258248832');
+    var obj2 = createPerson('张三', '45648979879');
+
+    alert(obj.showName == obj2.showName);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义滚动条——控制透明度</title>
+  <style>
+    #parent {
+      width: 600px;
+      height: 20px;
+      background: #999;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #div1 {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #div2 {
+      width: 300px;
+      height: 300px;
+      background: green;
+      filter: alpha(opacity(0));
+      opacity: 0;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      var oDiv = document.getElementById('div1');
+      var oDiv2 = document.getElementById('div2');
+      var oParent = document.getElementById('parent');
+      var disX = 0;
+      //var disY = 0;
+
+      oDiv.onmousedown = function(ev) {
+        var oEvent = ev || event;
+        //oEvent.clientX：鼠标按下时距离浏览器【窗口】左上角的水平坐标
+        //oDiv.offsetLeft：被拖动元素距离【页面】左上角的水平坐标
+        disX = oEvent.clientX - oDiv.offsetLeft;
+        //鼠标坐标X = 鼠标按下时距离浏览器【窗口】左上角的水平坐标 - 被拖动元素距离【页面】左上角的水平坐标
+        //  disY = oEvent.clientY - oDiv.offsetTop;
+
+        document.onmousemove = function(ev) {
+          var oEvent = ev || event;
+
+          var l = oEvent.clientX - disX;
+          //  var t = oEvent.clientY - disY;
+          if (l < 0) { // 左边界溢出判断
+            l = 0 // 右边界溢出判断
+          } else if (l > oParent.offsetWidth - oDiv.offsetWidth) {
+            //offsetWidth是对象的可见宽度
+            l = oParent.offsetWidth - oDiv.offsetWidth;
+          }
+
+          // 设置被拖拽元素的left和top值，实现拖拽效果
+          oDiv.style.left = l + 'px';
+          //  oDiv.style.top = t + 'px';
+
+          //比例:scale   父级的宽度减去本身的宽度
+          var scale = l / (oParent.offsetWidth - oDiv.offsetWidth)
+          document.title = scale;
+
+          //通过oDiv的滚动条控制oDiv2的大小
+          // oDiv2.style.width = 400 * scale + 'px';
+          // oDiv2.style.height = 400 * scale + 'px';
+
+          //通过oDiv的滚动条控制oDiv2的透明度
+          oDiv2.style.filter = 'alpha(opacity:' + scale * 100 + ')';
+          oDiv2.style.opacity = scale;
+        };
+        document.onmouseup = function() {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        }
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="div1">
+    </div>
+  </div>
+  <div id="div2">
+
+  </div>
+</body>
+
+</html>

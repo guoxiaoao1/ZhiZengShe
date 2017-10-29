@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>call</title>
+  <script>
+    // function show() {
+    //   alert(this);
+    // }
+    // show(12);
+
+    function show(a, b) {
+      alert('this是:' + this + '\na是:' + a + '\nb是:' + b);
+    }
+    //  show(12, 5);
+    //把第一个参数作为this，后面的依次传给函数作为参数
+    show.call('abc', 12, 5);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

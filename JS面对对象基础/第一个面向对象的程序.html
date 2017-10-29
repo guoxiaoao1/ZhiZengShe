@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第一个面向对象的程序</title>
+  <script>
+    var obj = new Object(); //new一个对象
+    //对于用他的人来说，他看不到这些，能看到只有//1.new一个对象 //2.调用他的方法
+    obj.name = 'blue';
+    obj.qq = '123456789';
+    obj.showName = function() {
+      alert('我的名字叫：' +
+        this.name);
+    }
+    obj.showQQ = function() {
+      alert('我的QQ号：' +
+        this.qq);
+    }
+
+    obj.showName(); //调用他的方法
+    obj.showQQ();
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

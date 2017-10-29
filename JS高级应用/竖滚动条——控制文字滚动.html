@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>竖滚动条——控制文字滚动</title>
+  <style>
+    #parent {
+      width: 20px;
+      height: 600px;
+      background: #999;
+      margin: 0 auto;
+      position: relative;
+      float: right;
+    }
+
+    #div1 {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #div2 {
+      margin: 0 auto;
+      width: 350px;
+      height: 300px;
+      border: 1px solid #000;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #div3 {
+      padding: 5px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      /*通过滚动条控制top*/
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      var oDiv = document.getElementById('div1');
+      var oDiv2 = document.getElementById('div2');
+      var oDiv3 = document.getElementById('div3');
+      var oParent = document.getElementById('parent');
+      //  var disX = 0;
+      var disY = 0;
+
+      oDiv.onmousedown = function(ev) {
+        var oEvent = ev || event;
+        //oEvent.clientX：鼠标按下时距离浏览器【窗口】左上角的水平坐标
+        //oDiv.offsetLeft：被拖动元素距离【页面】左上角的水平坐标
+        //disX = oEvent.clientX - oDiv.offsetLeft;
+        //鼠标坐标X = 鼠标按下时距离浏览器【窗口】左上角的水平坐标 - 被拖动元素距离【页面】左上角的水平坐标
+        disY = oEvent.clientY - oDiv.offsetTop;
+
+        document.onmousemove = function(ev) {
+          var oEvent = ev || event;
+
+          //  var l = oEvent.clientX - disX;
+          var t = oEvent.clientY - disY;
+          // if (l < 0) { // 左边界溢出判断
+          //   l = 0 // 右边界溢出判断
+          // } else if (l > oParent.offsetWidth - oDiv.offsetWidth) {
+          //   //offsetWidth是对象的可见宽度
+          //   l = oParent.offsetWidth - oDiv.offsetWidth;
+          // }
+          if (t < 0) { // 左边界溢出判断
+            t = 0 // 右边界溢出判断
+          } else if (t > oParent.offsetHeight - oDiv.offsetHeight) {
+            //offsetWidth是对象的可见宽度
+            t = oParent.offsetHeight - oDiv.offsetHeight;
+          }
+
+          // 设置被拖拽元素的left和top值，实现拖拽效果
+          //  oDiv.style.left = l + 'px';
+          oDiv.style.top = t + 'px';
+
+          //比例:scale   父级的宽度减去本身的宽度
+          //  var scale = l / (oParent.offsetWidth - oDiv.offsetWidth)
+          var scale = t / (oParent.offsetHeight - oDiv.offsetHeight)
+          document.title = scale;
+
+          //通过oDiv的滚动条控制oDiv2的大小
+          oDiv3.style.top = -scale * (oDiv3.offsetHeight - oDiv2.offsetHeight) + 'px';
+
+
+
+        };
+        document.onmouseup = function() {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        }
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="div1">
+    </div>
+  </div>
+  <div id="div2">
+    <div id="div3">
+      简介：js和jquery中各式各样的宽高有很多。平时用的也蛮多，但是有时候我们会把某些宽高的用法和使用场景混淆，本套课程帮大家理清js和jquery的各种宽高，并和大家一起对宽高做一些简单的应用。<br /> 第1章 课程介绍 <br /> 1-1 JS/jQuery宽高应用课程介绍 (03:12)<br /> 1-2 JS/jQuery宽高应用课前热身 (03:53)<br /> 第2章 js的各种高度和宽度 <br /> 2-1 与window相关的宽高 (03:19) <br />      2-2 举例演示window相关宽高 (07:51)<br /> 2-3window相关宽高浏览器兼容问题 (04:18) <br /> 2-4 document下面client相关宽高介绍 (06:01)<br /> 2-5 document下面offset相关宽高介绍 (07:13) <br /> 2-6 document下面scroll相关宽高介绍2 (11:53) <br /> 2-7 documentElement和body的那些事 (07:14) <br /> 2-8 document相关宽高兼容问题
+      (11:30)
+      <br /> 2-9 Event对象的5中坐标 (11:25) <br /> 2-10 本章小结 (02:44) <br /> 第3章js各种宽高的应用 <br /> 3-1 可视区域 (09:20) <br /> 3-2 网页滚动到顶部或者底部 (06:04)<br /> 3-3 DIV滚动到底部加载 (07:12) <br /> 3-4 计算滚动轴的宽度 (09:59) <br /> 3-5 js宽高应用小结 (02:53) <br /> 第4章 jquery各种高度和宽度
+      <br /> 4-1 jquery相关宽高介绍 (09:42)<br /> 4-2 jquery宽高举例 (11:30) <br /> 4-3 jquery宽高演示之offset和position (07:21) <br /> 第5章 jquery各种宽高应用 <br /> 5-1 jquery可视区域加载(03:53)<br /> 5-2 jquery滚动到底部和顶部加载 (03:41) <br /> 5-3 jquery宽高应用总结 (03:59)<br />
+    </div>
+</body>
+
+</html>
