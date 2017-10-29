@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      var oTab = document.getElementById('tab1');
+      var oldColor = '';
+
+      //alert(oTab.rows.length);
+      for (var i = 0; i < oTab.rows.length; i++) {
+
+        oTab.rows[i].onmouseover = function() {
+          oldColor = this.style.background;
+          this.style.background = 'gray';
+        }
+        oTab.rows[i].onmouseout = function() {
+          this.style.background = oldColor;
+        }
+        if (i % 2) {
+          oTab.rows[i].style.background = '#ccc';
+        } else {
+          oTab.rows[i].style.background = '';
+        }
+      }
+    }
+  </script>
+  <table id="tab1" border="1" width="500">
+    <thred>
+      <td>ID</td>
+      <td>姓名</td>
+      <td>年龄</td>
+    </thred>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>red</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>green</td>
+        <td>19</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>blue</td>
+        <td>20</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>子节点</title>
+  <script>
+    window.onload = function() {
+      //1  childNodes
+      var oUl = document.getElementById('ul1');
+      // alert(oUl.childNodes.length);
+      for (var i = 0; i < oUl.childNodes.length; i++) {
+        //oUl.childNodes[i].style.background = 'red';
+        //  alert(oUl.childNodes[i].nodeType);
+        //nodeType==3 文本节点
+        //nodeType==1 元素节点
+        if (oUl.childNodes[i].nodeType == 1) {
+          oUl.childNodes[i].style.background = 'red';
+        }
+      }
+      //2   children  children只包括元素节点，不包括文本节点
+      alert(oUl.children.length);
+    }
+  </script>
+</head>
+
+<body>
+  <ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  文本节点就是没有被
+  <,>包围的文本：<a>c</a>中的c 文本节点<br/>
+    <span> aqa 元素节点</span>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>父节点</title>
+  <script>
+    window.onload = function() {
+
+      var aA = document.getElementsByTagName('a');
+      for (var i = 0; i < aA.length; i++) {
+        aA[i].onclick = function() {
+          //把a当前的父节点（li）隐藏；
+          this.parentNode.style.display = 'none';
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <ul id="ul1">
+    <li>111111<a href="javascript:;">隐藏</a></li>
+    <li>222222<a href="javascript:;">隐藏</a></li>
+    <li>333333<a href="javascript:;">隐藏</a></li>
+    <li>444444<a href="javascript:;">隐藏</a></li>
+  </ul>
+</body>
+
+</html>

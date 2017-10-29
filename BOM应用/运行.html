@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>运行</title>
+  <script>
+    window.onload = function() {
+      var oTxt = document.getElementById('txt1');
+      var oBtn = document.getElementById('btn1');
+
+      oBtn.onclick = function() {
+        //about:blank空白页
+        //_blank  _self
+        var oNewWin = window.open('about:blank', '_blank');
+        oNewWin.document.write(oTxt.value);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <textarea id="txt1" rows="10" cols="40"></textarea>
+  <input type="button" id="btn1" value="运行" />
+</body>
+
+</html>

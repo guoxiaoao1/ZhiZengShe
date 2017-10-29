@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首节点</title>
+  //尾节点(lastChild、lastElementChild)跟首节点(firstChild、firstElementChild)用法一样; //兄弟节点也一样(nextSibling、nextElementSibling)(previousSibling、previousElementSibling);
+  <script>
+    window.onload = function() {
+      var oUl = document.getElementById('ul1');
+
+      if (oUl.firstElementChild) {
+        //高级浏览器可用
+        oUl.firstElementChild.style.background = 'red';
+      } else {
+        //IE 6-8下可用
+        oUl.firstChild.style.background = 'red';
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <ul id="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+</body>
+
+</html>

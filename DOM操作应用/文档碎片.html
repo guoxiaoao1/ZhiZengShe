@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function() {
+      var oUl = document.getElementById('ul1');
+      var oFrag = document.createDocumentFragment();
+      for (var i = 0; i < 10000; i++) {
+        var oLi = document.createElement('li');
+        oFrag.appendChild(oLi);
+        //文档碎皮只有在IE6、7才能提高性能，在高级浏览器几乎没有任何的提高，有的甚至还会降低性能；
+      }
+      oUl.appendChild(oFrag);
+    }
+  </script>
+</head>
+
+<body>
+  <ul id="ul1">
+
+  </ul>
+</body>
+
+</html>
